@@ -5,4 +5,4 @@
 
 **Member 2:** John Lloyd M.Valmoria
 
-**Member 3:** Your Member 3
+**Member 3:** Ritchie Ray B. Echavez Jr
