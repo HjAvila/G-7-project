@@ -5,7 +5,7 @@
 
 **Member 2:** John Lloyd M.Valmoria
 
-**Member 3:** Ritchie Ray B. Echavez Jr
+**Member 3:** Ritchie Karl Veluz
 
 ## Project Description
 
