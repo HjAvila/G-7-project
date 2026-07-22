@@ -7,6 +7,7 @@
 
 **Member 3:** Ritchie Karl Veluz
 
-## Project Description
+## Personal Expense Tracker System
 
-This project aims to develop a web-based system that applies the concepts and technologies learned in Web System and Technology 1. The system will provide a user-friendly interface and basic web functionalities.
+Description
+A web-based application that helps users record and manage their daily income and expenses. The system provides a dashboard to monitor financial activity, categorize transactions, and generate simple reports, enabling users to make better financial decisions.functionalities.
