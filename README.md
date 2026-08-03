@@ -12,8 +12,8 @@
 
 [View the Figma Design](https://www.figma.com/design/69EGbXYr3tHVA8ugPQMv6k/Inventory-Management-System?node-id=0-1&p=f&t=oXfjhTHmTNahebNO-0)
 
-Inventory Management System
+##Inventory Management System
 
-Description
+#Description
 
 A web-based Inventory Management System designed to help businesses efficiently manage their products, inventory, and daily operations. The system allows users to add, update, and monitor product information, track stock levels, record sales, and generate reports. Its goal is to improve inventory accuracy, streamline business processes, and support better decision making through organized and accessible data.
