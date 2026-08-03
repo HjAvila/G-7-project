@@ -7,6 +7,10 @@
 
 **Member 3:** Ritchie Karl Veluz
 
+## 🎨 UI Design (Figma)
+
+https://www.figma.com/design/69EGbXYr3tHVA8ugPQMv6k/Inventory-Management-System?node-id=0-1&p=f&t=oXfjhTHmTNahebNO-0
+
 ## Personal Expense Tracker System
 
 Description
