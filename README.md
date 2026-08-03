@@ -7,13 +7,13 @@
 
 **Member 3:** Ritchie Karl Veluz
 
-# Inventory Management System
 
 ## 🎨 Figma Design
 
 [View the Figma Design](https://www.figma.com/design/69EGbXYr3tHVA8ugPQMv6k/Inventory-Management-System?node-id=0-1&p=f&t=oXfjhTHmTNahebNO-0)
 
-## Personal Expense Tracker System
+Inventory Management System
 
 Description
-A web-based application that helps users record and manage their daily income and expenses. The system provides a dashboard to monitor financial activity, categorize transactions, and generate simple reports, enabling users to make better financial decisions.functionalities.
+
+A web-based Inventory Management System designed to help businesses efficiently manage their products, inventory, and daily operations. The system allows users to add, update, and monitor product information, track stock levels, record sales, and generate reports. Its goal is to improve inventory accuracy, streamline business processes, and support better decision making through organized and accessible data.
