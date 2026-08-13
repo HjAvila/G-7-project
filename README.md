@@ -1,44 +1,19 @@
-# Inventory Management System project
+# Group Name: G-7
 
-This template should help get you started developing with Vue 3 in Vite.
+## 👥 Group Members
+**Member 1 (Leader):** Hans Jerald A. Avila
 
-## Recommended IDE Setup
+**Member 2:** John Lloyd M.Valmoria
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+**Member 3:** Ritchie Karl Veluz
 
-## Recommended Browser Setup
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## 🎨 Figma Design
 
-## Customize configuration
+[View the Figma Design](https://www.figma.com/design/69EGbXYr3tHVA8ugPQMv6k/Inventory-Management-System?node-id=0-1&p=f&t=oXfjhTHmTNahebNO-0)
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Inventory Management System
 
-## Project Setup
+Description
 
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+A web-based Inventory Management System designed to help businesses efficiently manage their products, inventory, and daily operations. The system allows users to add, update, and monitor product information, track stock levels, record sales, and generate reports. Its goal is to improve inventory accuracy, streamline business processes, and support better decision making through organized and accessible data.
