@@ -1,8 +1,11 @@
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const email = ref('')
 const password = ref('')
+
+const router = useRouter()
 
 function handleLogin() {
   if (!email.value || !password.value) {
@@ -10,7 +13,8 @@ function handleLogin() {
     return
   }
 
-  alert(`Login submitted for: ${email.value}`)
+  // TODO: perform real authentication here. On success, navigate to dashboard.
+  router.push({ name: 'dashboard' })
 }
 </script>
 
