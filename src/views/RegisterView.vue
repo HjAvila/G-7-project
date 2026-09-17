@@ -25,49 +25,79 @@ function handleRegister() {
   <main class="register-page">
     <section class="register-card">
       <div class="brand">
-        <img src="../assets/ims-logo.png" alt="IMS logo" class="ims-logo" />
+        <img
+          src="../assets/ims-logo.png"
+          alt="IMS logo"
+          class="ims-logo"
+        />
+
         <h1>Create Account</h1>
-        <p>Create an account to access the Inventory Management System.</p>
+
+        <p>
+          Create an account to access the Inventory Management System.
+        </p>
       </div>
 
-      <form class="register-form" @submit.prevent="handleRegister">
+      <form
+        class="register-form"
+        @submit.prevent="handleRegister"
+        data-testid="register-form"
+      >
         <label for="full-name">Full name</label>
+
         <input
           id="full-name"
           v-model="fullName"
           type="text"
           placeholder="Enter your full name"
+          data-testid="register-full-name-input"
         />
 
         <label for="register-email">Email address</label>
+
         <input
           id="register-email"
           v-model="email"
           type="email"
           placeholder="Enter your email"
+          data-testid="register-email-input"
         />
 
         <label for="register-password">Password</label>
+
         <input
           id="register-password"
           v-model="password"
           type="password"
           placeholder="Create a password"
+          data-testid="register-password-input"
         />
 
         <label for="confirm-password">Confirm password</label>
+
         <input
           id="confirm-password"
           v-model="confirmPassword"
           type="password"
           placeholder="Confirm your password"
+          data-testid="register-confirm-password-input"
         />
 
-        <button type="submit">Create Account</button>
+        <button
+          type="submit"
+          data-testid="register-submit-button"
+        >
+          Create Account
+        </button>
 
         <p class="login-text">
           Already have an account?
-          <RouterLink to="/">Log in here</RouterLink>
+          <RouterLink
+            to="/"
+            data-testid="register-login-link"
+          >
+            Log in here
+          </RouterLink>
         </p>
       </form>
     </section>

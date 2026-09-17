@@ -34,6 +34,7 @@ function handleLogin() {
   v-model="email"
   type="email"
   placeholder="Enter your email"
+  data-testid="login-email-input"
 />
 
         <label for="password">Password</label>
@@ -42,13 +43,24 @@ function handleLogin() {
   v-model="password"
   type="password"
   placeholder="Enter your password"
+  data-testid="login-password-input"
 />
 
-<button type="submit">Log In</button>
+<button
+  type="submit"
+  data-testid="login-submit-button"
+>
+  Log In
+</button>
 
         <p class="register-text">
           Don't have an account?
-        <RouterLink to="/register">Register here</RouterLink>
+<RouterLink
+  to="/register"
+  data-testid="login-register-link"
+>
+  Register here
+</RouterLink>
         </p>
       </form>
     </section>
