@@ -1,23 +1,80 @@
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const fullName = ref('')
 const email = ref('')
 const password = ref('')
 const confirmPassword = ref('')
 
-function handleRegister() {
-  if (!fullName.value || !email.value || !password.value || !confirmPassword.value) {
-    alert('Please complete all fields.')
+const errorMessage = ref('')
+const successMessage = ref('')
+const isLoading = ref(false)
+
+async function handleRegister() {
+  errorMessage.value = ''
+  successMessage.value = ''
+
+  if (
+    !fullName.value ||
+    !email.value ||
+    !password.value ||
+    !confirmPassword.value
+  ) {
+    errorMessage.value = 'Please complete all fields.'
     return
   }
 
   if (password.value !== confirmPassword.value) {
-    alert('Passwords do not match.')
+    errorMessage.value = 'Passwords do not match.'
     return
   }
 
-  alert(`Registration submitted for: ${fullName.value}`)
+  isLoading.value = true
+
+  try {
+    const response = await fetch('http://127.0.0.1:8000/api/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        name: fullName.value,
+        email: email.value,
+        password: password.value,
+        password_confirmation: confirmPassword.value,
+      }),
+    })
+
+    const data = await response.json()
+
+    if (!response.ok) {
+      if (data.errors) {
+        const firstError = Object.values(data.errors).flat()[0]
+        errorMessage.value = firstError || 'Registration failed.'
+      } else {
+        errorMessage.value = data.message || 'Registration failed.'
+      }
+
+      return
+    }
+
+    localStorage.setItem('auth_token', data.token)
+    localStorage.setItem('user', JSON.stringify(data.user))
+
+    successMessage.value = 'Account created successfully.'
+
+    await router.push('/dashboard')
+  } catch (error) {
+    console.error(error)
+    errorMessage.value =
+      'Unable to connect to the server. Make sure Laravel is running.'
+  } finally {
+    isLoading.value = false
+  }
 }
 </script>
 
@@ -38,11 +95,7 @@ function handleRegister() {
         </p>
       </div>
 
-      <form
-        class="register-form"
-        @submit.prevent="handleRegister"
-        data-testid="register-form"
-      >
+      <form class="register-form" @submit.prevent="handleRegister">
         <label for="full-name">Full name</label>
 
         <input
@@ -50,7 +103,7 @@ function handleRegister() {
           v-model="fullName"
           type="text"
           placeholder="Enter your full name"
-          data-testid="register-full-name-input"
+          autocomplete="name"
         />
 
         <label for="register-email">Email address</label>
@@ -60,7 +113,7 @@ function handleRegister() {
           v-model="email"
           type="email"
           placeholder="Enter your email"
-          data-testid="register-email-input"
+          autocomplete="email"
         />
 
         <label for="register-password">Password</label>
@@ -70,7 +123,7 @@ function handleRegister() {
           v-model="password"
           type="password"
           placeholder="Create a password"
-          data-testid="register-password-input"
+          autocomplete="new-password"
         />
 
         <label for="confirm-password">Confirm password</label>
@@ -80,24 +133,24 @@ function handleRegister() {
           v-model="confirmPassword"
           type="password"
           placeholder="Confirm your password"
-          data-testid="register-confirm-password-input"
+          autocomplete="new-password"
         />
 
-        <button
-          type="submit"
-          data-testid="register-submit-button"
-        >
-          Create Account
+        <p v-if="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </p>
+
+        <p v-if="successMessage" class="success-message">
+          {{ successMessage }}
+        </p>
+
+        <button type="submit" :disabled="isLoading">
+          {{ isLoading ? 'Creating Account...' : 'Create Account' }}
         </button>
 
         <p class="login-text">
           Already have an account?
-          <RouterLink
-            to="/"
-            data-testid="register-login-link"
-          >
-            Log in here
-          </RouterLink>
+          <RouterLink to="/">Log in here</RouterLink>
         </p>
       </form>
     </section>
@@ -120,35 +173,36 @@ function handleRegister() {
 
 .register-card {
   width: 100%;
-  max-width: 430px;
-  padding: 32px 40px;
+  max-width: 600px;
+  padding: 40px 56px;
   background: #ffffff;
-  border-radius: 16px;
+  border-radius: 20px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
 .brand {
   text-align: center;
-  margin-bottom: 22px;
+  margin-bottom: 30px;
 }
 
 .ims-logo {
   display: block;
-  width: 120px;
+  width: 140px;
   height: auto;
-  margin: 0 auto 14px;
+  margin: 0 auto 18px;
 }
 
 .brand h1 {
   margin: 0 0 10px;
   color: #1f3b64;
-  font-size: 26px;
+  font-size: 30px;
 }
 
 .brand p {
   margin: 0;
   color: #6b7280;
   line-height: 1.5;
+  font-size: 17px;
 }
 
 .register-form {
@@ -157,17 +211,18 @@ function handleRegister() {
 }
 
 label {
-  margin: 12px 0 6px;
+  margin: 14px 0 7px;
   color: #374151;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 700;
 }
 
 input {
   width: 100%;
-  padding: 12px;
+  padding: 15px;
   border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 15px;
+  border-radius: 10px;
+  font-size: 16px;
 }
 
 input:focus {
@@ -176,14 +231,26 @@ input:focus {
   box-shadow: 0 0 0 3px rgba(31, 59, 100, 0.15);
 }
 
+.error-message {
+  margin: 14px 0 0;
+  color: #dc2626;
+  font-size: 14px;
+}
+
+.success-message {
+  margin: 14px 0 0;
+  color: #16a34a;
+  font-size: 14px;
+}
+
 button {
   margin-top: 24px;
-  padding: 13px;
+  padding: 15px;
   border: 0;
-  border-radius: 8px;
+  border-radius: 10px;
   background: #1f3b64;
   color: #ffffff;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 700;
   cursor: pointer;
 }
@@ -192,10 +259,16 @@ button:hover {
   background: #162d4d;
 }
 
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 .login-text {
-  margin: 20px 0 0;
+  margin: 22px 0 0;
   text-align: center;
   color: #6b7280;
+  font-size: 16px;
 }
 
 a {
