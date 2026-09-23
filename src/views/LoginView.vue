@@ -75,6 +75,7 @@ async function handleLogin() {
 
         <input
           id="login-email-input"
+          data-testid="login-email"
           v-model="email"
           type="email"
           placeholder="Enter your email"
@@ -85,17 +86,26 @@ async function handleLogin() {
 
         <input
           id="login-password-input"
+          data-testid="login-password"
           v-model="password"
           type="password"
           placeholder="Enter your password"
           autocomplete="current-password"
         />
 
-        <p v-if="errorMessage" class="error-message">
+        <p
+          v-if="errorMessage"
+          data-testid="login-error"
+          class="error-message"
+        >
           {{ errorMessage }}
         </p>
 
-        <button type="submit" :disabled="isLoading">
+        <button
+          type="submit"
+          data-testid="login-submit"
+          :disabled="isLoading"
+        >
           {{ isLoading ? 'Logging in...' : 'Log In' }}
         </button>
 

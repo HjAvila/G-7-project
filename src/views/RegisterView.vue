@@ -100,6 +100,7 @@ async function handleRegister() {
 
         <input
           id="full-name"
+          data-testid="register-name"
           v-model="fullName"
           type="text"
           placeholder="Enter your full name"
@@ -110,6 +111,7 @@ async function handleRegister() {
 
         <input
           id="register-email"
+          data-testid="register-email"
           v-model="email"
           type="email"
           placeholder="Enter your email"
@@ -120,6 +122,7 @@ async function handleRegister() {
 
         <input
           id="register-password"
+          data-testid="register-password"
           v-model="password"
           type="password"
           placeholder="Create a password"
@@ -130,21 +133,34 @@ async function handleRegister() {
 
         <input
           id="confirm-password"
+          data-testid="register-confirm-password"
           v-model="confirmPassword"
           type="password"
           placeholder="Confirm your password"
           autocomplete="new-password"
         />
 
-        <p v-if="errorMessage" class="error-message">
+        <p
+          v-if="errorMessage"
+          data-testid="register-error"
+          class="error-message"
+        >
           {{ errorMessage }}
         </p>
 
-        <p v-if="successMessage" class="success-message">
+        <p
+          v-if="successMessage"
+          data-testid="register-success"
+          class="success-message"
+        >
           {{ successMessage }}
         </p>
 
-        <button type="submit" :disabled="isLoading">
+        <button
+          type="submit"
+          data-testid="register-submit"
+          :disabled="isLoading"
+        >
           {{ isLoading ? 'Creating Account...' : 'Create Account' }}
         </button>
 
