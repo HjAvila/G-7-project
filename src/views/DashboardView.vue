@@ -12,6 +12,9 @@
 </script>
 
 <style scoped>
+* {
+  box-sizing: border-box;
+}
 .dashboard-page {
   min-height: 100vh;
   display: grid;
